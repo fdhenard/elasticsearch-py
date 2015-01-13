@@ -389,7 +389,7 @@ class Elasticsearch(object):
 
     @query_params('consistency', 'fields', 'lang', 'parent', 'refresh',
         'replication', 'retry_on_conflict', 'routing', 'script', 'timeout',
-        'timestamp', 'ttl', 'version', 'version_type')
+        'timestamp', 'ttl', 'version', 'version_type', 'upsert')
     def update(self, index, doc_type, id, body=None, params=None):
         """
         Update a document based on a script or partial data provided.
@@ -414,6 +414,7 @@ class Elasticsearch(object):
         :arg ttl: Expiration time for the document
         :arg version: Explicit version number for concurrency control
         :arg version_type: Explicit version number for concurrency control
+        :arg upsert: the document as upsert
         """
         for param in (index, doc_type, id):
             if param in SKIP_IN_PATH:
